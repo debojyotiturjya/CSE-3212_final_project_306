@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fatflix',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFE4F5F2),
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFE4F5F2)),
       home: const LoginPage(),
     );
   }
 }
+
+//checking commit errors
