@@ -12,6 +12,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final _nameController = TextEditingController();
   final _studentIdController = TextEditingController();
+  final _mobileController = TextEditingController();
   final _emailController = TextEditingController();
   final _departmentController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -20,29 +21,27 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _obscurePassword = true;
   bool _obscureConfirm = true;
 
-  // Regex patterns
-  // Letters only, words separated by single spaces, 2+ characters total
   static final RegExp _nameRegex =
       RegExp(r"^(?=.{2,50}$)[A-Za-z]+(?:[ .'-][A-Za-z]+)*$");
 
-  // 6 to 12 digits (adjust to your university's ID format)
-  static final RegExp _studentIdRegex = RegExp(r'^\d{6,12}$');
+  static final RegExp _studentIdRegex = RegExp(r'^\d{16}$');
+
+  static final RegExp _mobileRegex = RegExp(r'^01\d{9}$');
 
   static final RegExp _emailRegex =
       RegExp(r'^[\w.+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$');
 
-  // Letters, spaces, & . - allowed
   static final RegExp _departmentRegex =
       RegExp(r'^[A-Za-z][A-Za-z &.\-]{1,59}$');
 
-  // At least 8 chars, at least one letter and one number
   static final RegExp _passwordRegex =
-      RegExp(r'^(?=.*[A-Za-z])(?=.*\d).{8,}$');
+      RegExp(r'^(?=.[A-Za-z])(?=.\d).{8,}$');
 
   @override
   void dispose() {
     _nameController.dispose();
     _studentIdController.dispose();
+    _mobileController.dispose();
     _emailController.dispose();
     _departmentController.dispose();
     _passwordController.dispose();
@@ -54,11 +53,11 @@ class _RegisterPageState extends State<RegisterPage> {
       {Widget? suffix}) {
     return InputDecoration(
       labelText: label,
-      labelStyle: const TextStyle(color: Color(0xFF702D45)),
-      prefixIcon: Icon(icon, color: const Color(0xFFB85C75)),
+      labelStyle: const TextStyle(color: Color(0xFF005B66)),
+      prefixIcon: Icon(icon, color: const Color(0xFF0F8B8D)),
       suffixIcon: suffix,
       filled: true,
-      fillColor: const Color(0xFFFFFDF8),
+      fillColor: const Color(0xFFF7FFFD),
       contentPadding:
           const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
       errorMaxLines: 3,
@@ -67,11 +66,11 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFE8C9D2)),
+        borderSide: const BorderSide(color: Color(0xFFB8DEDA)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFE5B65C), width: 2),
+        borderSide: const BorderSide(color: Color(0xFF00A6A6), width: 2),
       ),
     );
   }
@@ -79,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8E9ED),
+      backgroundColor: const Color(0xFFE4F5F2),
       appBar: AppBar(
         title: const Text(
           'Fatflix',
@@ -89,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF702D45),
+        backgroundColor: const Color(0xFF005B66),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SafeArea(
@@ -97,7 +96,6 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(20),
             child: ConstrainedBox(
-              // Keeps the fields from stretching across the whole screen
               constraints: const BoxConstraints(maxWidth: 340),
               child: Form(
                 key: _formKey,
@@ -107,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const Icon(
                       Icons.person_add_alt_1,
                       size: 70,
-                      color: Color(0xFF702D45),
+                      color: Color(0xFF005B66),
                     ),
                     const SizedBox(height: 15),
                     const Text(
@@ -115,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: TextStyle(
                         fontSize: 27,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF702D45),
+                        color: Color(0xFF005B66),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -124,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,
-                        color: Color(0xFFB85C75),
+                        color: Color(0xFF0F8B8D),
                       ),
                     ),
                     const SizedBox(height: 28),
@@ -157,7 +155,25 @@ class _RegisterPageState extends State<RegisterPage> {
                           return 'Please enter your Student ID';
                         }
                         if (!_studentIdRegex.hasMatch(input)) {
-                          return 'Student ID must be 6 to 12 digits';
+                          return 'Student ID must be 16 digits';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _mobileController,
+                      keyboardType: TextInputType.phone,
+                      style: const TextStyle(color: Color(0xFF29232A)),
+                      decoration:
+                          _inputDecoration('Mobile Number', Icons.phone),
+                      validator: (value) {
+                        final input = value?.trim() ?? '';
+                        if (input.isEmpty) {
+                          return 'Please enter your mobile number';
+                        }
+                        if (!_mobileRegex.hasMatch(input)) {
+                          return 'Mobile number must be 11 digits starting with 01';
                         }
                         return null;
                       },
@@ -212,7 +228,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             _obscurePassword
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            color: const Color(0xFFB85C75),
+                            color: const Color(0xFF0F8B8D),
                           ),
                           onPressed: () {
                             setState(() {
@@ -244,7 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             _obscureConfirm
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            color: const Color(0xFFB85C75),
+                            color: const Color(0xFF0F8B8D),
                           ),
                           onPressed: () {
                             setState(() {
@@ -270,7 +286,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         'Password must be at least 8 characters and include a letter and a number.',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Color(0xFF702D45),
+                          color: Color(0xFF005B66),
                         ),
                       ),
                     ),
@@ -280,7 +296,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 48,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF702D45),
+                          backgroundColor: const Color(0xFF005B66),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -310,7 +326,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: const Text(
                         'Already have an account? Login',
                         style: TextStyle(
-                          color: Color(0xFF702D45),
+                          color: Color(0xFF005B66),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

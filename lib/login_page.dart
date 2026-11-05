@@ -17,11 +17,9 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _obscurePassword = true;
 
-  // Regex patterns
   static final RegExp _emailRegex =
       RegExp(r'^[\w.+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$');
 
-  
   static final RegExp _studentIdRegex = RegExp(r'^\d{16}$');
 
   @override
@@ -35,11 +33,11 @@ class _LoginPageState extends State<LoginPage> {
       {Widget? suffix}) {
     return InputDecoration(
       labelText: label,
-      labelStyle: const TextStyle(color: Color(0xFF702D45)),
-      prefixIcon: Icon(icon, color: const Color(0xFFB85C75)),
+      labelStyle: const TextStyle(color: Color(0xFF005B66)),
+      prefixIcon: Icon(icon, color: const Color(0xFF0F8B8D)),
       suffixIcon: suffix,
       filled: true,
-      fillColor: const Color(0xFFFFFDF8),
+      fillColor: const Color.fromARGB(255, 248, 254, 255),
       contentPadding:
           const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
       border: OutlineInputBorder(
@@ -47,11 +45,11 @@ class _LoginPageState extends State<LoginPage> {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFE8C9D2)),
+        borderSide: const BorderSide(color: Color(0xFFB8DEDA)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFE5B65C), width: 2),
+        borderSide: const BorderSide(color: Color(0xFF00A6A6), width: 2),
       ),
     );
   }
@@ -59,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8E9ED),
+      backgroundColor: const Color(0xFFE4F5F2),
       appBar: AppBar(
         title: const Text(
           'FatFlix',
@@ -69,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF702D45),
+        backgroundColor: const Color(0xFF005B66),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SafeArea(
@@ -77,7 +75,6 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(20),
             child: ConstrainedBox(
-              // Keeps the fields from stretching across the whole screen
               constraints: const BoxConstraints(maxWidth: 340),
               child: Form(
                 key: _formKey,
@@ -87,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     const Icon(
                       Icons.movie_filter_rounded,
                       size: 75,
-                      color: Color(0xFF702D45),
+                      color: Color(0xFF005B66),
                     ),
                     const SizedBox(height: 20),
                     const Text(
@@ -95,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF702D45),
+                        color: Color(0xFF005B66),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -104,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
-                        color: Color(0xFFB85C75),
+                        color: Color(0xFF0F8B8D),
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -147,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                             _obscurePassword
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            color: const Color(0xFFB85C75),
+                            color: const Color(0xFF0F8B8D),
                           ),
                           onPressed: () {
                             setState(() {
@@ -169,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 48,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF702D45),
+                          backgroundColor: const Color(0xFF005B66),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -177,7 +174,6 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // TODO: check credentials against your backend here
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -231,8 +227,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-/// Clickable text that lifts up (with a soft shadow and underline)
-/// while the mouse cursor is over it.
 class _HoverLink extends StatefulWidget {
   final String text;
   final VoidCallback onTap;
@@ -263,10 +257,10 @@ class _HoverLinkState extends State<_HoverLink> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: const Color(0xFF702D45),
+              color: const Color(0xFF005B66),
               decoration:
                   _hovered ? TextDecoration.underline : TextDecoration.none,
-              decorationColor: const Color(0xFF702D45),
+              decorationColor: const Color(0xFF005B66),
               shadows: _hovered
                   ? [
                       Shadow(
