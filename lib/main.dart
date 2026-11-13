@@ -1,8 +1,11 @@
-import 'package:final_project_debojyoti_64_g_306/homepage.dart';
-import 'package:final_project_debojyoti_64_g_306/login_page.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:final_project_debojyoti_64_g_306/auth/auth_gate.dart';
+import 'package:final_project_debojyoti_64_g_306/firebase_options.dart'; // created by `flutterfire configure`
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -11,13 +14,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Fatflix',
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFE4F5F2)),
-      home: const LoginPage(),
+      title: "FATFLIX",
+      home: AuthGate(),
     );
   }
 }
-
-

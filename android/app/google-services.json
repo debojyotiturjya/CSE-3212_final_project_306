@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "74907834120",
+    "project_id": "fatflix-debojyoti-64",
+    "storage_bucket": "fatflix-debojyoti-64.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74907834120:android:b0fdabb758a9e04e5e3ebd",
+        "android_client_info": {
+          "package_name": "com.example.final_project_debojyoti_64_g_306"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByAewwAPNo2fmSv2FoFox50hYg1mxZ-Dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
