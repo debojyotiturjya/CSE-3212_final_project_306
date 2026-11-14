@@ -1,6 +1,3 @@
-// Web-only Firebase configuration for FATFLIX.
-// (Trimmed from the FlutterFire-generated file: Android, iOS, macOS and
-// Windows are removed because the app only runs in a browser.)
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 
 class DefaultFirebaseOptions {
