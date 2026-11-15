@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:material_ui/material_ui.dart';
 import 'package:final_project_debojyoti_64_g_306/constants.dart';
 
-// The harmless "Watch now" surprise screen. The sound can't be muted. That's the prank.
+
 class RickrollPage extends StatefulWidget {
   final String movieTitle;
   const RickrollPage({super.key, required this.movieTitle});
@@ -24,14 +24,13 @@ class _RickrollPageState extends State<RickrollPage> {
     _play(); // start the sound as soon as the page opens
   }
 
+//--------PLAY RICKROLL------
   Future<void> _play() async {
     try {
-      await _player.setReleaseMode(ReleaseMode.loop);
-      // The path is relative to the assets folder: assets/audio/rickroll.mp3
-      await _player.play(AssetSource('rickroll.mp3'));
+      await _player.setReleaseMode(ReleaseMode.loop); //loop e bajay
+      await _player.play(AssetSource('rickroll.mp3')); //plays this
       _playing = true;
     } catch (e) {
-      // Look for this line in your Debug Console / terminal if there is no sound.
       debugPrint('Rickroll audio error: $e');
     }
   }
@@ -49,7 +48,7 @@ class _RickrollPageState extends State<RickrollPage> {
     return Scaffold(
       backgroundColor: kMaroon,
       appBar: AppBar(
-        title: Text("Now playing: ${widget.movieTitle}"),
+        title: Text("YOU HAVE BEEN PRANKED"),
         backgroundColor: kMaroon,
         foregroundColor: Colors.white,
       ),
