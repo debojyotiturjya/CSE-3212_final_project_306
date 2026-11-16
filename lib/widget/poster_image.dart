@@ -26,9 +26,9 @@ class PosterImage extends StatelessWidget {
         return Container(
           height: height,
           width: double.infinity,
-          color: Colors.black12,
+          color: kCard,
           alignment: Alignment.center,
-          child: const Icon(Icons.movie, size: 50, color: kMaroon),
+          child: const Icon(Icons.movie, size: 50, color: kPrimary),
         );
       },
     );

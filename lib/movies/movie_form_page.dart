@@ -101,7 +101,7 @@ class _MovieFormPageState extends State<MovieFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_isEdit ? "Edit Movie" : "Add Movie"),
-        backgroundColor: kMaroon,
+        backgroundColor: kAppBar,
         foregroundColor: Colors.white,
       ),
       body: Center(
@@ -109,7 +109,7 @@ class _MovieFormPageState extends State<MovieFormPage> {
           child: SizedBox(
             width: 400,
             child: Card(
-              color: kPink,
+              color: kCard,
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Form(
@@ -186,7 +186,7 @@ class _MovieFormPageState extends State<MovieFormPage> {
                                 }
                               },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: kMaroon,
+                          backgroundColor: kPrimary,
                           foregroundColor: Colors.white,
                           fixedSize: const Size(180, 45),
                         ),

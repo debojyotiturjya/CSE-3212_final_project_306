@@ -46,10 +46,10 @@ class _RickrollPageState extends State<RickrollPage> {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
     return Scaffold(
-      backgroundColor: kMaroon,
+      backgroundColor: kBackground,
       appBar: AppBar(
         title: Text("YOU HAVE BEEN PRANKED"),
-        backgroundColor: kMaroon,
+        backgroundColor: kAppBar,
         foregroundColor: Colors.white,
       ),
       // If a browser blocked the autoplay, the first tap anywhere starts the sound.
@@ -95,7 +95,7 @@ class _RickrollPageState extends State<RickrollPage> {
                     final count = snapshot.data?.data()?['rickrollCount'] ?? 0;
                     return Text(
                       "Your Rickroll meter: $count",
-                      style: const TextStyle(fontSize: 18, color: kPink),
+                      style: const TextStyle(fontSize: 18, color: kSecondary),
                     );
                   },
                 ),
@@ -103,8 +103,8 @@ class _RickrollPageState extends State<RickrollPage> {
                 ElevatedButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: kPink,
-                    foregroundColor: kMaroon,
+                    backgroundColor: kSecondary,
+                    foregroundColor: kAppBar,
                     fixedSize: const Size(200, 45),
                   ),
                   child: const Text("Back to movies"),

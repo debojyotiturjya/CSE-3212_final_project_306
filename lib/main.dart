@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:final_project_debojyoti_64_g_306/auth/auth_gate.dart';
+import 'package:final_project_debojyoti_64_g_306/constants.dart';
 import 'package:final_project_debojyoti_64_g_306/firebase_options.dart'; 
 
 void main() async {
@@ -14,10 +15,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "FATFLIX",
-      home: AuthGate(),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: kBackground,
+        colorScheme: const ColorScheme.dark(
+          primary: kPrimary,
+          secondary: kSecondary,
+          surface: kCard,
+          onSurface: kText,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: kAppBar,
+          foregroundColor: kText,
+        ),
+      ),
+      home: const AuthGate(),
     );
   }
 }

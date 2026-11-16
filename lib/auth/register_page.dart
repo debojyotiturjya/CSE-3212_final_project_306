@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Register"),
-        backgroundColor: kMaroon,
+        backgroundColor: kAppBar,
         foregroundColor: Colors.white,
       ),
       body: Center(
@@ -127,7 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SizedBox(
             width: 350,
             child: Card(
-              color: kPink,
+              color: kCard,
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Form(
@@ -227,7 +227,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 }
                               },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: kMaroon,
+                          backgroundColor: kPrimary,
                           foregroundColor: Colors.white,
                           fixedSize: const Size(150, 45),
                         ),
@@ -245,7 +245,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(height: 10),
                       TextButton(
                         onPressed: () => Navigator.pop(context),
-                        style: TextButton.styleFrom(foregroundColor: kMaroon),
+                        style: TextButton.styleFrom(foregroundColor: kSecondary),
                         child: const Text(
                           "Already have an account? Login",
                           style: TextStyle(

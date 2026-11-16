@@ -59,11 +59,11 @@ class _InputFieldState extends State<InputField> {
               )
             : null,
         filled: true,
-        fillColor: Colors.white,
+        fillColor: kBackground,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: kMaroon, width: 2),
+          borderSide: const BorderSide(color: kPrimary, width: 2),
         ),
       ),
     );

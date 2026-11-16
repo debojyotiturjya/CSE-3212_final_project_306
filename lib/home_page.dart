@@ -15,12 +15,13 @@ class HomePage extends StatelessWidget {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
     return Scaffold(
+      backgroundColor: kBackground,
       appBar: AppBar(
         title: const Text(
           "FATFLIX",
           style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 2),
         ),
-        backgroundColor: kMaroon,
+        backgroundColor: kAppBar,
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
                 return Column(
                   children: [
                     UserAccountsDrawerHeader(
-                      decoration: const BoxDecoration(color: kMaroon),
+                      decoration: const BoxDecoration(color: kAppBar),
                       accountName: Text(name),
                       accountEmail: Text(email),
                       currentAccountPicture: const Icon(
@@ -70,7 +71,7 @@ class HomePage extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: kMaroon,
+                          color: kPrimary,
                         ),
                       ),
                     ),
@@ -97,7 +98,7 @@ class HomePage extends StatelessWidget {
 
       floatingActionButton: FloatingActionButton(
         tooltip: "Add movie",
-        backgroundColor: kMaroon,
+        backgroundColor: kPrimary,
         foregroundColor: Colors.white,
         onPressed: () {
           Navigator.push(
@@ -166,7 +167,7 @@ class _MovieCard extends StatelessWidget {
     final posterUrl = (movie['posterUrl'] ?? '').toString();
 
     return Card(
-      color: kPink,
+      color: kCard,
       elevation: 4,
       clipBehavior: Clip.antiAlias,
       margin: EdgeInsets.zero,

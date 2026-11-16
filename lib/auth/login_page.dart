@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("FATFLIX"),
-        backgroundColor: kMaroon,
+        backgroundColor: kAppBar,
         foregroundColor: Colors.white,
       ),
       body: Center(
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
           child: SizedBox(
             width: 350,
             child: Card(
-              color: kPink,
+              color: kCard,
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Form(
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: kMaroon,
+                          color: kPrimary,
                         ),
                       ),
                       const Text("Login Form", style: TextStyle(fontSize: 18)),
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                                 }
                               },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: kMaroon,
+                          backgroundColor: kPrimary,
                           foregroundColor: Colors.white,
                           fixedSize: const Size(150, 45),
                         ),
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => const RegisterPage(),
                           ),
                         ),
-                        style: TextButton.styleFrom(foregroundColor: kMaroon),
+                        style: TextButton.styleFrom(foregroundColor: kSecondary),
                         child: const Text(
                           "Don't have an ID? Register now",
                           style: TextStyle(

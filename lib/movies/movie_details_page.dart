@@ -184,7 +184,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: kMaroon, size: 20),
+          Icon(icon, color: kPrimary, size: 20),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -227,7 +227,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                 child: ElevatedButton(
                   onPressed: _addReview,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: kMaroon,
+                    backgroundColor: kPrimary,
                     foregroundColor: Colors.white,
                   ),
                   child: const Text("Post"),
@@ -254,7 +254,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               children: [
                 for (final doc in reviews)
                   Card(
-                    color: kPink,
+                    color: kCard,
                     child: ListTile(
                       title: Text(
                         (doc.data()['userName'] ?? 'Anonymous').toString(),
@@ -306,20 +306,20 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Scaffold(
-            appBar: AppBar(backgroundColor: kMaroon, foregroundColor: Colors.white),
+            appBar: AppBar(backgroundColor: kAppBar, foregroundColor: Colors.white),
             body: Center(child: Text("Error: ${snapshot.error}")),
           );
         }
         if (!snapshot.hasData) {
           return Scaffold(
-            appBar: AppBar(backgroundColor: kMaroon, foregroundColor: Colors.white),
+            appBar: AppBar(backgroundColor: kAppBar, foregroundColor: Colors.white),
             body: const Center(child: CircularProgressIndicator()),
           );
         }
         final movie = snapshot.data!.data();
         if (movie == null) {
           return Scaffold(
-            appBar: AppBar(backgroundColor: kMaroon, foregroundColor: Colors.white),
+            appBar: AppBar(backgroundColor: kAppBar, foregroundColor: Colors.white),
             body: const Center(child: Text("This movie was removed.")),
           );
         }
@@ -330,7 +330,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         return Scaffold(
           appBar: AppBar(
             title: Text(title),
-            backgroundColor: kMaroon,
+            backgroundColor: kAppBar,
             foregroundColor: Colors.white,
             actions: [
               // Only the person who added the movie can edit or delete it.
@@ -376,7 +376,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                         style: const TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
-                          color: kMaroon,
+                          color: kPrimary,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -400,7 +400,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                           icon: const Icon(Icons.play_arrow),
                           label: const Text("Watch now"),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: kMaroon,
+                            backgroundColor: kPrimary,
                             foregroundColor: Colors.white,
                             fixedSize: const Size(200, 50),
                           ),
