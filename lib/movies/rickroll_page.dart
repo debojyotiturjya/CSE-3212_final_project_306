@@ -73,7 +73,7 @@ class _RickrollPageState extends State<RickrollPage> {
                 ),
                 const SizedBox(height: 20),
                 Image.network(
-                  kRickrollGif,
+                  kRickrollGif, //rickroll gif
                   height: 260,
                   errorBuilder: (context, error, stackTrace) {
                     return const Text("🕺", style: TextStyle(fontSize: 120));

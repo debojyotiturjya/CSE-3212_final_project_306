@@ -2,16 +2,21 @@
 // Each function returns an error message (String) or null when the value is valid.
 class Validators {
   static final RegExp _name = RegExp(r'^[a-zA-Z .]+$');
-  static final RegExp _studentId = RegExp(r'^\d{6,16}$'); // basic: digits only
-  static final RegExp _phone = RegExp(r'^(?:\+?88)?01[3-9]\d{8}$'); // Bangladesh
+  static final RegExp _studentId = RegExp(r'^\d{16}$'); // basic: digits only
+  static final RegExp _phone = RegExp(
+    r'^(?:\+?88)?01[3-9]\d{8}$',
+  ); // Bangladesh
   static final RegExp _email = RegExp(r'^[\w.+-]+@[\w-]+\.[\w.]+$');
   // 8+ chars, at least one digit, lowercase, uppercase and ANY symbol, no spaces.
   static final RegExp _password = RegExp(
     r'^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9\s])\S{8,}$',
   );
   static final RegExp _genre = RegExp(r'^[A-Za-z][A-Za-z ,/&-]*$');
-  static final RegExp _year = RegExp(r'^(19|20)\d{2}$');
-  static final RegExp _url = RegExp(r'^https?://\S+\.\S+$', caseSensitive: false);
+  static final RegExp _year = RegExp(r'^(18|19|20)\d{2}$');
+  static final RegExp _url = RegExp(
+    r'^https?://\S+\.\S+$',
+    caseSensitive: false,
+  );
 
   // ---------- login / register ----------
   static String? name(String? value, String label) {
@@ -22,7 +27,7 @@ class Validators {
 
   static String? studentId(String? value) {
     if (value == null || value.trim().isEmpty) return "Enter your ID";
-    if (!_studentId.hasMatch(value.trim())) return "ID must be 6 to 16 digits";
+    if (!_studentId.hasMatch(value.trim())) return "ID must be 16 digits";
     return null;
   }
 
@@ -78,7 +83,8 @@ class Validators {
 
   static String? posterUrl(String? value) {
     if (value == null || value.trim().isEmpty) return "Paste a poster link";
-    if (!_url.hasMatch(value.trim())) return "Link must start with http:// or https://";
+    if (!_url.hasMatch(value.trim()))
+      return "Link must start with http:// or https://";
     return null;
   }
 
@@ -91,7 +97,7 @@ class Validators {
   // ---------- reviews ----------
   static String? review(String? value) {
     if (value == null || value.trim().isEmpty) return "Write something first";
-    if (value.trim().length > 300) return "Max 300 characters";
+    if (value.trim().length > 200) return "Max 300 characters";
     return null;
   }
 }

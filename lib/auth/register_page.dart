@@ -110,9 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     if (!mounted) return;
-    _showMessage("Registered successfully!");
-    // Firebase already signed the user in, so AuthGate is showing HomePage
-    // underneath this page. Popping reveals it.
+    _showMessage("Registered successfully!");  // Firebase already signed the user in, so AuthGate is showing HomePage
     Navigator.pop(context);
   }
 

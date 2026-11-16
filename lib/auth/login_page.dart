@@ -5,7 +5,7 @@ import 'package:final_project_debojyoti_64_g_306/constants.dart';
 import 'package:final_project_debojyoti_64_g_306/utils/validators.dart';
 import 'package:final_project_debojyoti_64_g_306/widget/input_field.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget { 
   const LoginPage({super.key});
 
   @override
@@ -19,15 +19,17 @@ class _LoginPageState extends State<LoginPage> {
   bool _isLoading = false;
 
   @override
-  void dispose() {
+  void dispose() { //after a successful login/refresh disposes the datas that was in the text box
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
+
+// THE SINGLE QUOTED STRINGS ARE THE BUILT IN ERROR MESSAGE OF FIREBASE
   String _friendlyMessage(FirebaseAuthException e) {
     final code = e.code;
-    if (code == 'invalid-credential' ||
+    if (code == 'invalid-credential' || 
         code == 'user-not-found' ||
         code == 'wrong-password') {
       return "Wrong email or password.";
@@ -39,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
     }
     return "Login failed [$code]: ${e.message}";
   }
+  
 
   Future<void> login() async {
     setState(() {
@@ -49,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
-      // Success: AuthGate sees the new user and swaps this page for HomePage.
+      // authGate sees the new user and swaps this page for HomePage.
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(
@@ -94,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const Text("Login Form", style: TextStyle(fontSize: 18)),
                       const SizedBox(height: 25),
-                      InputField(
+                      InputField(                             //EMAIL INPUT
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         labelText: "Email",
@@ -103,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                         validator: (value) => Validators.email(value),
                       ),
                       const SizedBox(height: 10),
-                      InputField(
+                      InputField(//                            PASSWORD INPUT
                         controller: _passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         labelText: "Password",
@@ -142,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                             : const Text("Login"),
                       ),
                       const SizedBox(height: 10),
-                      // TextButton shows the hand cursor + hover highlight automatically.
+                      // textButton shows the hand cursor+ hover highlight automatically.
                       TextButton(
                         onPressed: () => Navigator.push(
                           context,
