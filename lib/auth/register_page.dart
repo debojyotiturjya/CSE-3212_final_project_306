@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _cPasswordController = TextEditingController();
+  final TextEditingController _cPasswordController = TextEditingController(); //confirm password
   bool _isLoading = false;
 
   @override
@@ -66,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
       _isLoading = true;
     });
 
-    // 1) Create the login. Firebase Auth hashes and stores the password.
+    // Create the login. Firebase Auth hashes and stores the password.
     UserCredential cred;
     try {
       cred = await FirebaseAuth.instance

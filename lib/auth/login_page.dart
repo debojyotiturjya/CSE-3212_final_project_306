@@ -145,7 +145,8 @@ class _LoginPageState extends State<LoginPage> {
                             : const Text("Login"),
                       ),
                       const SizedBox(height: 10),
-                      // textButton shows the hand cursor+ hover highlight automatically.
+
+//--------------------Dont have id? Register now--------------------
                       TextButton(
                         onPressed: () => Navigator.push(
                           context,
