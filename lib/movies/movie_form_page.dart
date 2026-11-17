@@ -148,8 +148,8 @@ class _MovieFormPageState extends State<MovieFormPage> {
                       InputField(
                         controller: _producerController,
                         keyboardType: TextInputType.text,
-                        labelText: "Producer",
-                        hintText: "Who produced it?",
+                        labelText: "Director",
+                        hintText: "Who directed it?",
                         prefixIcon: const Icon(Icons.business),
                         validator: (value) => Validators.producer(value),
                       ),

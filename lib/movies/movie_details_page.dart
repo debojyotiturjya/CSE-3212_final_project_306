@@ -40,8 +40,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
   // ---------- Watch now (the Rickroll surprise) ----------
   Future<void> _watchNow(String title) async {
-    // Open the surprise page IMMEDIATELY. Browsers only allow sound shortly
-    // after a tap, so nothing slow may happen before this.
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -57,11 +55,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           .update({'rickrollCount': FieldValue.increment(1)})
           .timeout(const Duration(seconds: 5));
     } catch (_) {
-      // The surprise still happens even if the counter could not be updated.
+      // the surprise still happens even if the counter could not be updated.
     }
   }
 
-  // ---------- generic "Are you sure?" dialog ----------
+  // ---------- "Are you sure?" dialog ----------
   void _confirmDelete(String title, Future<void> Function() onYes) {
     showDialog(
       context: context,

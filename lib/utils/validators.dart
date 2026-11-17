@@ -1,12 +1,10 @@
-// All regex validation rules live here, so every form shares them.
-// Each function returns an error message (String) or null when the value is valid.
 class Validators {
   static final RegExp _name = RegExp(r'^[a-zA-Z .]+$');
   static final RegExp _studentId = RegExp(r'^\d{16}$'); // basic: digits only
   static final RegExp _phone = RegExp(
     r'^(?:\+?88)?01[3-9]\d{8}$',
   ); // Bangladesh
-  static final RegExp _email = RegExp(r'^[\w.+-]+@[\w-]+\.[\w.]+$');
+  static final RegExp _email = RegExp(r'^[\w.-]+@[\w-]+\.[\w.]+$');
   // 8+ chars, at least one digit, lowercase, uppercase and ANY symbol, no spaces.
   static final RegExp _password = RegExp(
     r'^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9\s])\S{8,}$',
